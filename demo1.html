@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //转化多维数组 [ [a1, b1, c1], [a2, b2, c2], [a3, b3, c3] ]
+        let arr = ['a1', 'a2', 'a3', 'b1', 'b2', 'b3', 'c1', 'c2', 'c3']
+        function rangeArr( arr, result = [] ){
+            arr.forEach( v => {
+                let i = /\d*$/.exec( v )[0]
+                result[ i ] ? result[ i ].push( v ) : result[ i ] = [ v ]
+            });
+            return result.filter(Boolean)
+        }
+        let newArr = rangeArr( arr )
+        console.log( newArr );
+
+        //交集
+        function intersection( a, b ){
+            return a.filter( v => b.indexOf( v ) > -1 )
+        }
+
+        //差集
+        function poorset( a, b ){
+            return a.filter( v => b.indexOf( v ) === -1 )
+        }
+        
+    </script>
+</body>
+</html>

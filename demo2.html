@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //使用路径语法访问对象
+        let obj = {
+            a: {
+                b:{
+                    c:{
+                        d: 1
+                    }
+                }
+            },
+            e: 2,
+            f: {
+                g: 3
+            }
+        }
+
+        //找出数组中出现最多的数
+        let arr= [1,2,2,2,2,3,3,4,5,4,6]
+        // let res = new Set()
+        // arr.reduce( ( pre, next ) => {
+        //     pre[ next ]? res.add( next ) : pre[ next ] = 1
+        //     return pre
+        // }, {} )
+        // let newArr = [...res]
+        // console.log( newArr );
+
+        //重复次数最多
+        function getRepeat(){
+            let res = new Set()
+            let repeatObj = arr.reduce( ( pre, next ) => {
+                if( pre[ next ] ){
+                    pre[ next ]++
+                    res.add( next )
+                }else{
+                    pre[ next ] = 1
+                }
+                return pre
+            }, {} )
+            let max = Math.max( ...Object.values( repeatObj ) )
+            let maxValue = 0
+            for(let k in repeatObj){
+                if( repeatObj[ k ] === max ) maxValue = k
+            }
+            return {
+                maxValue,
+                res
+            }
+        }
+        let {maxValue: max, res: repeat} = getRepeat()
+        console.log( max, repeat );
+    </script>
+</body>
+</html>
